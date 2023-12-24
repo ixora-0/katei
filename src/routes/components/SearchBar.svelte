@@ -28,7 +28,7 @@
   <input
     type="text"
     name="q"
-    class="w-full bg-background font-mono text-7xl text-text outline-none transition-[text-shadow] duration-md ease-in-out {hocusing
+    class="w-full bg-background font-mono text-7xl text-text outline-none transition-[text-shadow] duration-md ease-in-out placeholder:text-text placeholder:opacity-50 {hocusing
       ? 'pr-12'
       : ''}"
     style:text-shadow={hocusing
