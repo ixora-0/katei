@@ -6,7 +6,6 @@
   let body: HTMLBodyElement | undefined | null;
   onMount(() => {
     reloadSettings();
-    console.log($settings);
     body = document.querySelector("body");
   });
   $: if (body !== undefined && body !== null) {
