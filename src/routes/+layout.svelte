@@ -10,11 +10,11 @@
     body = document.querySelector("body");
   });
   $: if (body !== undefined && body !== null) {
-    body.style.backgroundColor = $settings.backgroundColor;
-    body.style.setProperty("--bg-color", $settings.backgroundColor);
-    body.style.setProperty("--text-color", $settings.textColor);
-    body.style.setProperty("--border-color", $settings.borderColor);
-    body.style.setProperty("--shadow-color", $settings.shadowColor);
+    body.style.backgroundColor = $settings.colors.background;
+    body.style.setProperty("--bg-color", $settings.colors.background);
+    body.style.setProperty("--text-color", $settings.colors.text);
+    body.style.setProperty("--border-color", $settings.colors.border);
+    body.style.setProperty("--shadow-color", $settings.colors.shadow);
   }
 </script>
 

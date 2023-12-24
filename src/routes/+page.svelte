@@ -45,7 +45,7 @@
 
   const updateColorisTheme = () => {
     // change coloris theme based on background color
-    if (tinycolor($settings.backgroundColor).isDark()) {
+    if (tinycolor($settings.colors.background).isDark()) {
       Coloris({
         themeMode: "dark",
       });
@@ -87,22 +87,22 @@
     <ColorInput
       label="Background Color:"
       id="bgColor"
-      bind:value={$settings.backgroundColor}
+      bind:value={$settings.colors.background}
     />
     <ColorInput
       label="Text Color:"
       id="txtColor"
-      bind:value={$settings.textColor}
+      bind:value={$settings.colors.text}
     />
     <ColorInput
       label="Border Color:"
       id="borderColor"
-      bind:value={$settings.borderColor}
+      bind:value={$settings.colors.border}
     />
     <ColorInput
       label="Shadow Color:"
       id="shadowColor"
-      bind:value={$settings.shadowColor}
+      bind:value={$settings.colors.shadow}
     />
   </form>
 

@@ -4,16 +4,20 @@ import { error } from "@sveltejs/kit";
 import tinycolor from "tinycolor2";
 
 interface Settings {
-  backgroundColor: string;
-  textColor: string;
-  borderColor: string;
-  shadowColor: string;
+  colors: {
+    background: string;
+    text: string;
+    border: string;
+    shadow: string;
+  };
 }
 const defaultSettings: Settings = {
-  backgroundColor: "#292B38",
-  textColor: "#ffffff",
-  borderColor: "#ffffff",
-  shadowColor: "#00000080",
+  colors: {
+    background: "#292B38",
+    text: "#ffffff",
+    border: "#ffffff",
+    shadow: "#00000080",
+  },
 };
 
 export function reloadSettings() {
@@ -35,11 +39,11 @@ function loadStoredSettings(): Settings {
 
   const storedSettings: Settings = { ...defaultSettings, ...parsedData };
 
-  // replace invalid values
-  for (const k of Object.keys(storedSettings)) {
-    const colorKey = k as keyof Settings;
-    if (!tinycolor(storedSettings[colorKey]).isValid()) {
-      storedSettings[colorKey] = defaultSettings[colorKey];
+  // replace invalid color values
+  for (const k of Object.keys(storedSettings.colors)) {
+    const colorKey = k as keyof Settings["colors"];
+    if (!tinycolor(storedSettings.colors[colorKey]).isValid()) {
+      storedSettings.colors[colorKey] = defaultSettings.colors[colorKey];
     }
   }
 
