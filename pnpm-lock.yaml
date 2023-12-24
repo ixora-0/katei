@@ -5,12 +5,18 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
+  '@melloware/coloris':
+    specifier: ^0.22.0
+    version: 0.22.0
   '@sveltejs/adapter-auto':
     specifier: ^2.0.0
     version: 2.1.1(@sveltejs/kit@1.30.0)
   '@sveltejs/kit':
     specifier: ^1.27.4
     version: 1.30.0(svelte@4.2.8)(vite@4.5.1)
+  '@types/tinycolor2':
+    specifier: ^1.4.6
+    version: 1.4.6
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.0.0
     version: 6.14.0(@typescript-eslint/parser@6.14.0)(eslint@8.55.0)(typescript@5.3.3)
@@ -35,12 +41,15 @@ devDependencies:
   prettier:
     specifier: ^3.1.1
     version: 3.1.1
+  prettier-plugin-organize-imports:
+    specifier: ^3.2.4
+    version: 3.2.4(prettier@3.1.1)(typescript@5.3.3)
   prettier-plugin-svelte:
-    specifier: ^3.0.0
+    specifier: ^3.1.2
     version: 3.1.2(prettier@3.1.1)(svelte@4.2.8)
   prettier-plugin-tailwindcss:
     specifier: ^0.5.9
-    version: 0.5.9(prettier-plugin-svelte@3.1.2)(prettier@3.1.1)
+    version: 0.5.9(prettier-plugin-organize-imports@3.2.4)(prettier-plugin-svelte@3.1.2)(prettier@3.1.1)
   svelte:
     specifier: ^4.2.8
     version: 4.2.8
@@ -56,6 +65,9 @@ devDependencies:
   tiny-glob:
     specifier: ^0.2.9
     version: 0.2.9
+  tinycolor2:
+    specifier: ^1.6.0
+    version: 1.6.0
   tslib:
     specifier: ^2.4.1
     version: 2.6.2
@@ -380,6 +392,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
+  /@melloware/coloris@0.22.0:
+    resolution: {integrity: sha512-i06nJM0xQrgOkLFUi8d+8mrJjvFgPrU/nTM9vtRGip/T6yHUFIrNV7QgCyps3dBkKVRP/CeJzAeAIvJBSTSbFQ==}
+    dev: true
+
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -496,6 +512,10 @@ packages:
 
   /@types/semver@7.5.6:
     resolution: {integrity: sha512-dn1l8LaMea/IjDoHNd9J52uBbInB796CDffS6VdIxvqYCPSG0V0DzHp76GpaWnlhg88uYyPbXCDIowa86ybd5A==}
+    dev: true
+
+  /@types/tinycolor2@1.4.6:
+    resolution: {integrity: sha512-iEN8J0BoMnsWBqjVbWH/c0G0Hh7O21lpR2/+PrvAVgWdzL7eexIFm4JN/Wn10PTcmNdtS6U67r499mlWMXOxNw==}
     dev: true
 
   /@typescript-eslint/eslint-plugin@6.14.0(@typescript-eslint/parser@6.14.0)(eslint@8.55.0)(typescript@5.3.3):
@@ -1849,6 +1869,23 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
+  /prettier-plugin-organize-imports@3.2.4(prettier@3.1.1)(typescript@5.3.3):
+    resolution: {integrity: sha512-6m8WBhIp0dfwu0SkgfOxJqh+HpdyfqSSLfKKRZSFbDuEQXDDndb8fTpRWkUrX/uBenkex3MgnVk0J3b3Y5byog==}
+    peerDependencies:
+      '@volar/vue-language-plugin-pug': ^1.0.4
+      '@volar/vue-typescript': ^1.0.4
+      prettier: '>=2.0'
+      typescript: '>=2.9'
+    peerDependenciesMeta:
+      '@volar/vue-language-plugin-pug':
+        optional: true
+      '@volar/vue-typescript':
+        optional: true
+    dependencies:
+      prettier: 3.1.1
+      typescript: 5.3.3
+    dev: true
+
   /prettier-plugin-svelte@3.1.2(prettier@3.1.1)(svelte@4.2.8):
     resolution: {integrity: sha512-7xfMZtwgAWHMT0iZc8jN4o65zgbAQ3+O32V6W7pXrqNvKnHnkoyQCGCbKeUyXKZLbYE0YhFRnamfxfkEGxm8qA==}
     peerDependencies:
@@ -1859,7 +1896,7 @@ packages:
       svelte: 4.2.8
     dev: true
 
-  /prettier-plugin-tailwindcss@0.5.9(prettier-plugin-svelte@3.1.2)(prettier@3.1.1):
+  /prettier-plugin-tailwindcss@0.5.9(prettier-plugin-organize-imports@3.2.4)(prettier-plugin-svelte@3.1.2)(prettier@3.1.1):
     resolution: {integrity: sha512-9x3t1s2Cjbut2QiP+O0mDqV3gLXTe2CgRlQDgucopVkUdw26sQi53p/q4qvGxMLBDfk/dcTV57Aa/zYwz9l8Ew==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
@@ -1909,6 +1946,7 @@ packages:
         optional: true
     dependencies:
       prettier: 3.1.1
+      prettier-plugin-organize-imports: 3.2.4(prettier@3.1.1)(typescript@5.3.3)
       prettier-plugin-svelte: 3.1.2(prettier@3.1.1)(svelte@4.2.8)
     dev: true
 
@@ -2286,6 +2324,10 @@ packages:
     dependencies:
       globalyzer: 0.1.0
       globrex: 0.1.2
+    dev: true
+
+  /tinycolor2@1.6.0:
+    resolution: {integrity: sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==}
     dev: true
 
   /to-regex-range@5.0.1:
