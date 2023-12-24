@@ -1,7 +1,7 @@
 <script lang="ts">
-export let trackingEffect = true;
-export let dropShadow = "drop-shadow-hard-md";
-export let dropShadowHover = "hover:drop-shadow-hard";
+  export let trackingEffect = true;
+  export let dropShadow = "drop-shadow-hard-md";
+  export let dropShadowHover = "hover:drop-shadow-hard";
 </script>
 
 <span

@@ -1,18 +1,18 @@
 <script lang="ts">
-import { fly } from "svelte/transition";
-export let width: string = "auto";
-export let disabled = false;
-export let onHoldColor = "transparent";
+  import { fly } from "svelte/transition";
+  export let width: string = "auto";
+  export let disabled = false;
+  export let onHoldColor = "transparent";
 
-let hovering = false;
-let focusing = false;
-let holding = false;
-let hocusing = false;
-$: hocusing = hovering || focusing;
+  let hovering = false;
+  let focusing = false;
+  let holding = false;
+  let hocusing = false;
+  $: hocusing = hovering || focusing;
 </script>
 
 <button
-  style:width={width}
+  style:width
   class={`relative flex items-center justify-center rounded border-4 border-border transition-[box-shadow,transform] duration-md ease-in-out hover:translate-x-0.5 hover:translate-y-0.5 disabled:pointer-events-none disabled:opacity-50 ${
     hocusing ? "shadow-hard-inset" : "shadow-hard-md-inset-sm"
   }`}
@@ -29,7 +29,7 @@ $: hocusing = hovering || focusing;
   }}
   on:focusin={() => (focusing = true)}
   on:focusout={() => (focusing = false)}
-  disabled={disabled}
+  {disabled}
 >
   <div class="absolute h-full w-full overflow-hidden">
     <div
@@ -64,13 +64,13 @@ $: hocusing = hovering || focusing;
 </button>
 
 <style>
-button:disabled > div.foreground {
-  text-decoration-thickness: 3px !important;
-  text-decoration-color: red !important;
-  text-decoration: line-through;
-}
-button:disabled > div.foreground > span:before,
-button:disabled > div.foreground > span:after {
-  content: "\00a0\00a0";
-}
+  button:disabled > div.foreground {
+    text-decoration-thickness: 3px !important;
+    text-decoration-color: red !important;
+    text-decoration: line-through;
+  }
+  button:disabled > div.foreground > span:before,
+  button:disabled > div.foreground > span:after {
+    content: "\00a0\00a0";
+  }
 </style>

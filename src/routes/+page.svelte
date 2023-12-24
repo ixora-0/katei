@@ -1,70 +1,71 @@
 <script lang="ts">
-import SettingsButton from "./components/SettingsButton.svelte";
-import Button from "./components/Button.svelte";
-import SettingsModal from "./components/SettingsModal.svelte";
-import ColorInput from "./components/ColorInput.svelte";
-import tinycolor from "tinycolor2";
-import "@melloware/coloris/dist/coloris.css";
-import { onMount } from "svelte";
-import TrashIcon from "$lib/icons/TrashIcon.svelte";
-import SaveIcon from "$lib/icons/SaveIcon.svelte";
-import settings, { saveSettings, reloadSettings } from "$lib/stores/settings";
-import Clock from "./components/Clock.svelte";
-import SearchBar from "./components/SearchBar.svelte";
-import FancyHover from "./components/FancyHover.svelte";
+  import SettingsButton from "./components/SettingsButton.svelte";
+  import Button from "./components/Button.svelte";
+  import SettingsModal from "./components/SettingsModal.svelte";
+  import ColorInput from "./components/ColorInput.svelte";
+  import tinycolor from "tinycolor2";
+  import "@melloware/coloris/dist/coloris.css";
+  import { onMount } from "svelte";
+  import TrashIcon from "$lib/icons/TrashIcon.svelte";
+  import SaveIcon from "$lib/icons/SaveIcon.svelte";
+  import settings, { saveSettings, reloadSettings } from "$lib/stores/settings";
+  import Clock from "./components/Clock.svelte";
+  import SearchBar from "./components/SearchBar.svelte";
+  import FancyHover from "./components/FancyHover.svelte";
 
-let showModal = false;
-let editedColor = false;
+  let showModal = false;
+  let editedColor = false;
 
-let Coloris: any;
-onMount(async () => {
-  // have to init Coloris after mounting because it access window
-  Coloris = (await import("@melloware/coloris")).default;
-  Coloris.init();
-  Coloris({
-    parent: "dialog > div",
-    el: ".color-input",
-    wrap: false,
-    theme: "polaroid",
-    formatToggle: true,
-    alpha: true,
-    selectInput: true,
-    // closeButton: true,
-    // inline: true,
-    // defaultColor: '#000000',
-  });
-  Coloris.close();
-
-  document.addEventListener("close", (_event) => {
-    // modal also close when coloris is closed for some reason
-    // this hack reopens the modal right after it is close
-    showModal = true;
-  });
-});
-
-const updateColorisTheme = () => {
-  // change coloris theme based on background color
-  if (tinycolor($settings.backgroundColor).isDark()) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let Coloris: any;
+  onMount(async () => {
+    // have to init Coloris after mounting because it access window
+    Coloris = (await import("@melloware/coloris")).default;
+    Coloris.init();
     Coloris({
-      themeMode: "dark",
+      parent: "dialog > div",
+      el: ".color-input",
+      wrap: false,
+      theme: "polaroid",
+      formatToggle: true,
+      alpha: true,
+      selectInput: true,
+      // closeButton: true,
+      // inline: true,
+      // defaultColor: '#000000',
     });
-  } else {
-    Coloris({
-      themeMode: "light",
+    Coloris.close();
+
+    document.addEventListener("close", () => {
+      // modal also close when coloris is closed for some reason
+      // this hack reopens the modal right after it is close
+      showModal = true;
     });
+  });
+
+  const updateColorisTheme = () => {
+    // change coloris theme based on background color
+    if (tinycolor($settings.backgroundColor).isDark()) {
+      Coloris({
+        themeMode: "dark",
+      });
+    } else {
+      Coloris({
+        themeMode: "light",
+      });
+    }
+  };
+  // update coloris theme when modal opens
+  // best possible place because coloris closes when config change
+  $: if (showModal) {
+    updateColorisTheme();
   }
-};
-// update coloris theme when modal opens
-// best possible place because coloris closes when config change
-$: if (showModal) {
-  updateColorisTheme();
-}
 
-// update editedColor when colors from settings change
-$: {
-  $settings;
-  editedColor = true;
-}
+  // update editedColor when colors from settings change
+  $: {
+    $settings;
+    editedColor = true;
+  }
 </script>
 
 <div class="fixed bottom-10 left-10 flex items-center justify-center">
@@ -76,7 +77,7 @@ $: {
   />
 </div>
 
-<SettingsModal bind:showModal={showModal} bind:editedColor={editedColor}>
+<SettingsModal bind:showModal bind:editedColor>
   <h2 class="font-sans text-5xl font-black text-text">
     <FancyHover>Settings</FancyHover>
   </h2>

@@ -2,8 +2,8 @@
 // using workaround from:
 // https://github.com/antony/sveltekit-adapter-browser-extension/issues/24#issuecomment-1714652077
 const glob = require("tiny-glob");
-const path = require('path');
-const fs = require('fs');
+const path = require("path");
+const fs = require("fs");
 
 function hash(value) {
   let hash = 5381;
@@ -29,15 +29,21 @@ async function removeInlineScript(directory) {
     .map((f) => path.join(directory, f))
     .forEach((file) => {
       console.log(`edit file: ${file}`);
-      const f = fs.readFileSync(file, { encoding: 'utf-8' });
-      
-      const script = f.match(scriptRegx)
+      const f = fs.readFileSync(file, { encoding: "utf-8" });
+
+      const script = f.match(scriptRegx);
       if (script && script[1]) {
         const inlineContent = script[1]
-          .replace('__sveltekit', 'const __sveltekit')
-          .replace('document.currentScript.parentElement', 'document.body.firstElementChild');
+          .replace("__sveltekit", "const __sveltekit")
+          .replace(
+            "document.currentScript.parentElement",
+            "document.body.firstElementChild",
+          );
         const fn = `/script-${hash(inlineContent)}.js`;
-        const newHtml = f.replace(scriptRegx, `<script type="module" src="${fn}"></script>`);
+        const newHtml = f.replace(
+          scriptRegx,
+          `<script type="module" src="${fn}"></script>`,
+        );
         fs.writeFileSync(file, newHtml);
         fs.writeFileSync(`${directory}${fn}`, inlineContent);
         console.log(`Inline script extracted and saved at: ${directory}${fn}`);
@@ -45,4 +51,4 @@ async function removeInlineScript(directory) {
     });
 }
 
-removeInlineScript(path.resolve(__dirname, 'build'));
+removeInlineScript(path.resolve(__dirname, "build"));

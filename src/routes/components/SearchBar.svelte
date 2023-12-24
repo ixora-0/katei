@@ -1,19 +1,19 @@
 <script lang="ts">
-import RightArrowIcon from "$lib/icons/RightArrowIcon.svelte";
-import { fly } from "svelte/transition";
-export let value = "";
-export let placeholder = "search something...";
-export let width = "90vh";
-export let searchEngine = "https://www.google.com/search";
+  import RightArrowIcon from "$lib/icons/RightArrowIcon.svelte";
+  import { fly } from "svelte/transition";
+  export let value = "";
+  export let placeholder = "search something...";
+  export let width = "90vh";
+  export let searchEngine = "https://www.google.com/search";
 
-let thisEl: HTMLInputElement | undefined;
-let hovering = false;
-let focusing = false;
-let hocusing = false;
-$: hocusing = hovering || focusing;
+  let thisEl: HTMLInputElement | undefined;
+  let hovering = false;
+  let focusing = false;
+  let hocusing = false;
+  $: hocusing = hovering || focusing;
 </script>
 
-<!-- svelte-ignore a11y-autofocus a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y-autofocus -->
 <form
   action={searchEngine}
   method="get"
@@ -21,7 +21,7 @@ $: hocusing = hovering || focusing;
   class="relative transition-transform duration-md ease-in-out {hocusing
     ? 'translate-x-1 translate-y-1'
     : ''}"
-  style:width={width}
+  style:width
   on:mouseenter={() => (hovering = true)}
   on:mouseleave={() => (hovering = false)}
 >
@@ -37,8 +37,8 @@ $: hocusing = hovering || focusing;
     autofocus
     on:focusin={() => (focusing = true)}
     on:focusout={() => (focusing = false)}
-    bind:value={value}
-    placeholder={placeholder}
+    bind:value
+    {placeholder}
     bind:this={thisEl}
   />
 

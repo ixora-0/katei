@@ -2,16 +2,18 @@
 command = "vscode-eslint-language-server"
 args = ["--stdio"]
 
+[language-server.eslint.config]
+validate = "on"
+experimental = { useFlatConfig = false }
+rulesCustomizations = []
+run = "onType"
+problems = { shortenToSingleLine = false }
+nodePath = ""
+
 [[language]]
 name = "typescript"
 auto-format = true
-formatter = { command = "pnpx", args = [
-  "prettier",
-  "--config",
-  ".prettierrc",
-  "--parser",
-  "typescript",
-] }
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
 language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
@@ -22,17 +24,21 @@ language-servers = [
 [[language]]
 name = "svelte"
 auto-format = true
-formatter = { command = "pnpx", args = [
-  "prettier",
-  "--config",
-  ".prettierrc",
-  "--parser",
-  "svelte",
-] }
+formatter = { command = "prettier", args = ["--parser", "svelte"] }
 language-servers = [
   { name = "svelteserver", except-features = [
     "format",
   ] },
-  "tailwindcss-ls",
+  "eslint",
 ]
-file-types = ["svelte"]
+
+[[language]]
+name = "javascript"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "javascript"] }
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "eslint",
+]

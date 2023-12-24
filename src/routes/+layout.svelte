@@ -1,21 +1,21 @@
 <script lang="ts">
-import "../app.css";
-import { onMount } from "svelte";
-import settings, { reloadSettings } from "$lib/stores/settings";
+  import "../app.css";
+  import { onMount } from "svelte";
+  import settings, { reloadSettings } from "$lib/stores/settings";
 
-let body: HTMLBodyElement | undefined | null;
-onMount(() => {
-  reloadSettings();
-  console.log($settings);
-  body = document.querySelector("body");
-});
-$: if (body !== undefined && body !== null) {
-  body.style.backgroundColor = $settings.backgroundColor;
-  body.style.setProperty("--bg-color", $settings.backgroundColor);
-  body.style.setProperty("--text-color", $settings.textColor);
-  body.style.setProperty("--border-color", $settings.borderColor);
-  body.style.setProperty("--shadow-color", $settings.shadowColor);
-}
+  let body: HTMLBodyElement | undefined | null;
+  onMount(() => {
+    reloadSettings();
+    console.log($settings);
+    body = document.querySelector("body");
+  });
+  $: if (body !== undefined && body !== null) {
+    body.style.backgroundColor = $settings.backgroundColor;
+    body.style.setProperty("--bg-color", $settings.backgroundColor);
+    body.style.setProperty("--text-color", $settings.textColor);
+    body.style.setProperty("--border-color", $settings.borderColor);
+    body.style.setProperty("--shadow-color", $settings.shadowColor);
+  }
 </script>
 
 <svelte:head>
