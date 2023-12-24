@@ -31,6 +31,7 @@
     {#key showModal}
       {#each labels as label, i}
         <button
+          type="button"
           bind:this={buttons[i]}
           class="relative p-2 text-text transition-shadow duration-md ease-in-out {i ===
           selectedIdx
