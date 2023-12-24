@@ -5,7 +5,7 @@
   export let id: string;
 </script>
 
-<div class="flex items-center space-x-4 font-mono">
+<div class="flex flex-col space-y-2 font-mono">
   <label for={id} class="text-text">{label}</label>
   <input
     type="text"

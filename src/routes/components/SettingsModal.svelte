@@ -33,7 +33,7 @@
       dialog?.close();
     }
   }}
-  class={`overflow-visible rounded-lg border-4 border-border bg-background transition duration-md ease-in-out backdrop:bg-black/20 backdrop:backdrop-blur-sm ${
+  class={`w-full max-w-screen-xl overflow-visible rounded-lg border-4 border-border bg-background transition duration-md ease-in-out backdrop:bg-black/20 backdrop:backdrop-blur-sm ${
     hovering
       ? "translate-x-2 translate-y-2 shadow-hard-lg-inset-md"
       : "shadow-hard-xl-inset"

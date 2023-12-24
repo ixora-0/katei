@@ -3,12 +3,24 @@ import { writable, get } from "svelte/store";
 import { error } from "@sveltejs/kit";
 import tinycolor from "tinycolor2";
 
-interface Settings {
+export interface Settings {
   colors: {
     background: string;
     text: string;
     border: string;
     shadow: string;
+  };
+  clock: {
+    breakDateTime: boolean;
+    date: {
+      weekdayFormat: "long" | "short" | "hide";
+      monthFormat: "numeric" | "2-digit" | "long" | "short" | "hide";
+    };
+    time: {
+      twelveHour: boolean;
+      paddedHour: boolean;
+      showSeconds: boolean;
+    };
   };
 }
 const defaultSettings: Settings = {
@@ -17,6 +29,18 @@ const defaultSettings: Settings = {
     text: "#ffffff",
     border: "#ffffff",
     shadow: "#00000080",
+  },
+  clock: {
+    breakDateTime: true,
+    date: {
+      weekdayFormat: "long",
+      monthFormat: "long",
+    },
+    time: {
+      twelveHour: false,
+      paddedHour: true,
+      showSeconds: true,
+    },
   },
 };
 

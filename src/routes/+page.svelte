@@ -12,6 +12,7 @@
   import Clock from "./components/Clock.svelte";
   import SearchBar from "./components/SearchBar.svelte";
   import FancyHover from "./components/FancyHover.svelte";
+  import ButtonGroup from "./components/ButtonGroup.svelte";
 
   let showModal = false;
   let editedColor = false;
@@ -68,42 +69,107 @@
   }
 </script>
 
-<div class="fixed bottom-10 left-10 flex items-center justify-center">
-  <SettingsButton
-    on:click={() => {
-      editedColor = false;
-      showModal = true;
-    }}
-  />
-</div>
-
 <SettingsModal bind:showModal bind:editedColor>
   <h2 class="font-sans text-5xl font-black text-text">
     <FancyHover>Settings</FancyHover>
   </h2>
   <hr class="my-5 border-border" />
 
-  <form class="flex space-x-4">
-    <ColorInput
-      label="Background Color:"
-      id="bgColor"
-      bind:value={$settings.colors.background}
-    />
-    <ColorInput
-      label="Text Color:"
-      id="txtColor"
-      bind:value={$settings.colors.text}
-    />
-    <ColorInput
-      label="Border Color:"
-      id="borderColor"
-      bind:value={$settings.colors.border}
-    />
-    <ColorInput
-      label="Shadow Color:"
-      id="shadowColor"
-      bind:value={$settings.colors.shadow}
-    />
+  <form class="max-h-80 space-y-10 overflow-y-scroll">
+    <section class="space-y-4">
+      <h3 class="font-sans text-4xl font-bold text-text">
+        <FancyHover>Colors</FancyHover>
+      </h3>
+      <div class="flex flex-wrap items-center gap-6">
+        <ColorInput
+          label="Background Color:"
+          id="bgColor"
+          bind:value={$settings.colors.background}
+        />
+        <ColorInput
+          label="Text Color:"
+          id="txtColor"
+          bind:value={$settings.colors.text}
+        />
+        <ColorInput
+          label="Border Color:"
+          id="borderColor"
+          bind:value={$settings.colors.border}
+        />
+        <ColorInput
+          label="Shadow Color:"
+          id="shadowColor"
+          bind:value={$settings.colors.shadow}
+        />
+      </div>
+    </section>
+
+    <section class="space-y-8">
+      <section class="space-y-4">
+        <h3 class="font-sans text-4xl font-bold text-text">
+          <FancyHover>Clock</FancyHover>
+        </h3>
+        <ButtonGroup
+          label="Break date and time"
+          labels={["Break", "No break"]}
+          values={[true, false]}
+          bind:value={$settings.clock.breakDateTime}
+          {showModal}
+        />
+      </section>
+
+      <section class="space-y-4">
+        <h4 class="font-sans text-3xl font-semibold text-text">
+          <FancyHover>Time</FancyHover>
+        </h4>
+        <div class="flex flex-wrap items-center gap-6">
+          <ButtonGroup
+            label="Time format"
+            labels={["24-hour", "12-hour"]}
+            values={[false, true]}
+            bind:value={$settings.clock.time.twelveHour}
+            {showModal}
+          />
+          <ButtonGroup
+            label="Hour display"
+            labels={["Leading zero", "No leading zero"]}
+            values={[true, false]}
+            bind:value={$settings.clock.time.paddedHour}
+            {showModal}
+          />
+          <ButtonGroup
+            label="Show seconds"
+            labels={["Show", "Uide"]}
+            values={[true, false]}
+            bind:value={$settings.clock.time.showSeconds}
+            {showModal}
+          />
+        </div>
+      </section>
+      <section class="space-y-4">
+        <h4 class="font-sans text-3xl font-semibold text-text">
+          <FancyHover>Time</FancyHover>
+        </h4>
+
+        <div class="flex flex-wrap items-center gap-6">
+          <ButtonGroup
+            label="Weekday format"
+            labels={["Long", "Short", "Hide"]}
+            values={["long", "short", "hide"]}
+            bind:value={$settings.clock.date.weekdayFormat}
+            {showModal}
+          />
+          <ButtonGroup
+            label="Month format"
+            labels={["Number", "Leading zero", "Long", "Short", "Hide"]}
+            values={["numeric", "2-digit", "long", "short", "hide"]}
+            bind:value={$settings.clock.date.monthFormat}
+            {showModal}
+          />
+          <div />
+        </div>
+      </section>
+    </section>
   </form>
 
   <div class="mt-5 flex justify-end space-x-4">
@@ -136,7 +202,22 @@
   </div>
 </SettingsModal>
 
-<div class="mx-64 flex h-screen flex-col items-center justify-center">
-  <Clock />
-  <SearchBar width="100%" />
+<div class="flex h-screen w-screen justify-center">
+  <div
+    class="relative flex max-w-[1980px] grow items-center justify-center px-36"
+  >
+    <div class="max-w-screen-2xl grow">
+      <Clock clockSettings={$settings.clock} />
+      <SearchBar width="100%" />
+    </div>
+
+    <div class="absolute bottom-10 left-10 flex items-center justify-center">
+      <SettingsButton
+        on:click={() => {
+          editedColor = false;
+          showModal = true;
+        }}
+      />
+    </div>
+  </div>
 </div>
