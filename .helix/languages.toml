@@ -1,3 +1,7 @@
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
 [[language]]
 name = "typescript"
 auto-format = true
@@ -8,7 +12,6 @@ formatter = { command = "pnpx", args = [
   "--parser",
   "typescript",
 ] }
-roots = ["tailwind.config.ts", ".prettierrc.json"]
 language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
@@ -26,6 +29,10 @@ formatter = { command = "pnpx", args = [
   "--parser",
   "svelte",
 ] }
-language-servers = [{ name = "svelteserver", except-features = ["format"] }]
-roots = ["tailwind.config.ts", ".prettierrc.json"]
+language-servers = [
+  { name = "svelteserver", except-features = [
+    "format",
+  ] },
+  "tailwindcss-ls",
+]
 file-types = ["svelte"]
