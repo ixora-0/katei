@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "katei",
+  "version": "1.0.0",
+  "author": "Harrelix",
+  "description": "simple homepage",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "chrome_settings_overrides": {
+    "homepage": "index.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "katei@harrelix"
+    }
+  }
+}

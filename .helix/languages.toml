@@ -1,0 +1,31 @@
+[[language]]
+name = "typescript"
+auto-format = true
+formatter = { command = "pnpx", args = [
+  "prettier",
+  "--config",
+  ".prettierrc",
+  "--parser",
+  "typescript",
+] }
+roots = ["tailwind.config.ts", ".prettierrc.json"]
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "eslint",
+]
+
+[[language]]
+name = "svelte"
+auto-format = true
+formatter = { command = "pnpx", args = [
+  "prettier",
+  "--config",
+  ".prettierrc",
+  "--parser",
+  "svelte",
+] }
+language-servers = [{ name = "svelteserver", except-features = ["format"] }]
+roots = ["tailwind.config.ts", ".prettierrc.json"]
+file-types = ["svelte"]
