@@ -148,7 +148,7 @@
       </section>
       <section class="space-y-4">
         <h4 class="font-sans text-3xl font-semibold text-text">
-          <FancyHover>Time</FancyHover>
+          <FancyHover>Date</FancyHover>
         </h4>
 
         <div class="flex flex-wrap items-center gap-6">
