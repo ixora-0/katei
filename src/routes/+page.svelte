@@ -75,7 +75,7 @@
   </h2>
   <hr class="my-5 border-border" />
 
-  <form class="max-h-80 space-y-10 overflow-y-scroll">
+  <form class="max-h-80 space-y-10 overflow-y-scroll pb-32">
     <section class="space-y-4">
       <h3 class="font-sans text-4xl font-bold text-text">
         <FancyHover>Colors</FancyHover>
@@ -178,6 +178,65 @@
           <div />
         </div>
       </section>
+    </section>
+
+    <section class="space-y-4">
+      <h3 class="font-sans text-4xl font-bold text-text">
+        <FancyHover>Search Bar</FancyHover>
+      </h3>
+      <div class="flex flex-col space-y-6">
+        <div class="flex flex-wrap items-center gap-6">
+          <ButtonGroup
+            label="Visibility"
+            labels={["Show", "Hide"]}
+            values={[true, false]}
+            bind:value={$settings.searchBar.visibility}
+            {showModal}
+          />
+          <ButtonGroup
+            label="Autofocus"
+            labels={["On", "Off"]}
+            values={[true, false]}
+            bind:value={$settings.searchBar.autofocus}
+            {showModal}
+          />
+          <div class="flex flex-col space-y-2 font-mono">
+            <label for="placeholder" class="text-text"> Placeholder </label>
+            <input
+              type="text"
+              id="placeholder"
+              class="rounded border-2 border-border bg-background p-2 text-text shadow-hard"
+              bind:value={$settings.searchBar.placeholder}
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-6">
+          <div class="flex flex-col space-y-2 font-mono">
+            <label for="searchEngine" class="text-text">
+              Search Engine URL
+            </label>
+            <input
+              type="text"
+              id="searchEngine"
+              class="w-72 rounded border-2 border-border bg-background p-2 text-text shadow-hard"
+              bind:value={$settings.searchBar.searchEngine}
+            />
+          </div>
+
+          <div class="flex flex-col space-y-2 font-mono">
+            <label for="queryParameter" class="text-text">
+              Query Parameter
+            </label>
+            <input
+              type="text"
+              id="queryParameter"
+              class="w-16 rounded border-2 border-border bg-background p-2 text-text shadow-hard"
+              bind:value={$settings.searchBar.queryParameter}
+            />
+          </div>
+        </div>
+      </div>
     </section>
   </form>
 

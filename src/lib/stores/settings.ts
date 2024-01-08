@@ -23,6 +23,13 @@ export interface Settings {
       showSeconds: boolean;
     };
   };
+  searchBar: {
+    visibility: boolean;
+    autofocus: boolean;
+    placeholder: string;
+    searchEngine: string;
+    queryParameter: string;
+  };
 }
 const defaultSettings: Settings = {
   colors: {
@@ -43,6 +50,13 @@ const defaultSettings: Settings = {
       paddedHour: true,
       showSeconds: true,
     },
+  },
+  searchBar: {
+    visibility: true,
+    autofocus: true,
+    placeholder: "search something...",
+    searchEngine: "https://www.google.com/search",
+    queryParameter: "q",
   },
 };
 
