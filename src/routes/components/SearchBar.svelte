@@ -8,7 +8,7 @@
 
   let thisEl: HTMLInputElement | undefined;
   let hovering = false;
-  let focusing = false;
+  let focusing = true;
   let hocusing = false;
   $: hocusing = hovering || focusing;
 </script>
