@@ -17,7 +17,7 @@
 </script>
 
 <fieldset class="space-y-2">
-  <legend class="font-mono text-text">{label}</legend>
+  <legend class="font-mono text-xl text-text">{label}</legend>
   <div
     class="relative w-fit divide-x-2 divide-border overflow-hidden whitespace-nowrap rounded border-2 border-l-0 border-border font-mono shadow-hard"
   >

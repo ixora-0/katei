@@ -208,7 +208,9 @@
             {showModal}
           />
           <div class="flex flex-col space-y-2 font-mono">
-            <label for="placeholder" class="text-text"> Placeholder </label>
+            <label for="placeholder" class="text-xl text-text">
+              Placeholder
+            </label>
             <input
               type="text"
               id="placeholder"
@@ -220,7 +222,7 @@
 
         <div class="flex flex-wrap items-center gap-6">
           <div class="flex flex-col space-y-2 font-mono">
-            <label for="searchEngine" class="text-text">
+            <label for="searchEngine" class="text-xl text-text">
               Search Engine URL
             </label>
             <input
@@ -232,7 +234,7 @@
           </div>
 
           <div class="flex flex-col space-y-2 font-mono">
-            <label for="queryParameter" class="text-text">
+            <label for="queryParameter" class="text-xl text-text">
               Query Parameter
             </label>
             <input

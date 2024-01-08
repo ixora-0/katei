@@ -6,7 +6,7 @@
 </script>
 
 <div class="flex flex-col space-y-2 font-mono">
-  <label for={id} class="text-text">{label}</label>
+  <label for={id} class="text-xl text-text">{label}</label>
   <input
     type="text"
     {id}
