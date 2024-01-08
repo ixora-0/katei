@@ -216,10 +216,8 @@
     class="relative flex max-w-[1980px] grow items-center justify-center px-36"
   >
     <div class="max-w-screen-2xl grow">
-      {#if $settings.clock.visibility}
-        <Clock clockSettings={$settings.clock} />
-      {/if}
-      <SearchBar width="100%" />
+      <Clock clockSettings={$settings.clock} />
+      <SearchBar width="100%" searchBarSettings={$settings.searchBar} />
     </div>
 
     <div class="absolute bottom-10 left-10 flex items-center justify-center">

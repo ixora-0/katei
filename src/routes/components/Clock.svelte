@@ -51,20 +51,24 @@
   update();
 </script>
 
-<h1 class="font-sans text-8xl font-black leading-none tracking-tight text-text">
-  <FancyHover
-    trackingEffect={false}
-    dropShadow="drop-shadow-hard-lg"
-    dropShadowHover="hover:drop-shadow-hard-md"
+{#if clockSettings.visibility}
+  <h1
+    class="font-sans text-8xl font-black leading-none tracking-tight text-text"
   >
-    {#if date === undefined || time === undefined}
-      Loading...
-    {:else}
-      {date}
-      {#if clockSettings.breakDateTime}
-        <br />
+    <FancyHover
+      trackingEffect={false}
+      dropShadow="drop-shadow-hard-lg"
+      dropShadowHover="hover:drop-shadow-hard-md"
+    >
+      {#if date === undefined || time === undefined}
+        Loading...
+      {:else}
+        {date}
+        {#if clockSettings.breakDateTime}
+          <br />
+        {/if}
+        {time}
       {/if}
-      {time}
-    {/if}
-  </FancyHover>
-</h1>
+    </FancyHover>
+  </h1>
+{/if}
