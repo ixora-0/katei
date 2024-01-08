@@ -19,7 +19,7 @@
 <fieldset class="space-y-2">
   <legend class="font-mono text-text">{label}</legend>
   <div
-    class="relative w-fit divide-x-2 divide-border overflow-hidden whitespace-nowrap rounded border-2 border-border font-mono shadow-hard"
+    class="relative w-fit divide-x-2 divide-border overflow-hidden whitespace-nowrap rounded border-2 border-l-0 border-border font-mono shadow-hard"
   >
     <div
       class="absolute top-0 h-16 bg-blue-500 {showModal
