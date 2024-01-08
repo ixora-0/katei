@@ -109,13 +109,22 @@
         <h3 class="font-sans text-4xl font-bold text-text">
           <FancyHover>Clock</FancyHover>
         </h3>
-        <ButtonGroup
-          label="Break date and time"
-          labels={["Break", "No break"]}
-          values={[true, false]}
-          bind:value={$settings.clock.breakDateTime}
-          {showModal}
-        />
+        <div class="flex flex-wrap items-center gap-6">
+          <ButtonGroup
+            label="Visibility"
+            labels={["Show", "Hide"]}
+            values={[true, false]}
+            bind:value={$settings.clock.visibility}
+            {showModal}
+          />
+          <ButtonGroup
+            label="Break date and time"
+            labels={["Break", "No break"]}
+            values={[true, false]}
+            bind:value={$settings.clock.breakDateTime}
+            {showModal}
+          />
+        </div>
       </section>
 
       <section class="space-y-4">
@@ -207,7 +216,9 @@
     class="relative flex max-w-[1980px] grow items-center justify-center px-36"
   >
     <div class="max-w-screen-2xl grow">
-      <Clock clockSettings={$settings.clock} />
+      {#if $settings.clock.visibility}
+        <Clock clockSettings={$settings.clock} />
+      {/if}
       <SearchBar width="100%" />
     </div>
 

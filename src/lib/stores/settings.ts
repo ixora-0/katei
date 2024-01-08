@@ -11,6 +11,7 @@ export interface Settings {
     shadow: string;
   };
   clock: {
+    visibility: boolean;
     breakDateTime: boolean;
     date: {
       weekdayFormat: "long" | "short" | "hide";
@@ -31,6 +32,7 @@ const defaultSettings: Settings = {
     shadow: "#00000080",
   },
   clock: {
+    visibility: true,
     breakDateTime: true,
     date: {
       weekdayFormat: "long",
