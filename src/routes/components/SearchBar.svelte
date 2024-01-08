@@ -11,14 +11,29 @@
   let focusing = true;
   let hocusing = false;
   $: hocusing = hovering || focusing;
+
+  function search(event: Event) {
+    event.preventDefault();
+    const url = new URL(searchBarSettings.searchEngine);
+    const query = value.trim();
+    if (query.trim() === "") {
+      return;
+    }
+    const param = new URLSearchParams(url.search);
+    param.set(searchBarSettings.queryParameter, query);
+    url.search = param.toString();
+    if (searchBarSettings.newTab) {
+      window.open(url.toString());
+    } else {
+      window.location.href = url.toString();
+    }
+  }
 </script>
 
 <!-- svelte-ignore a11y-autofocus -->
 {#if searchBarSettings.visibility}
   <form
-    action={searchBarSettings.searchEngine}
-    method="get"
-    target="_blank"
+    on:submit={search}
     class="relative transition-transform duration-md ease-in-out {hocusing
       ? 'translate-x-1 translate-y-1'
       : ''}"

@@ -200,6 +200,13 @@
             bind:value={$settings.searchBar.autofocus}
             {showModal}
           />
+          <ButtonGroup
+            label="Open search in"
+            labels={["New tab", "This tab"]}
+            values={[true, false]}
+            bind:value={$settings.searchBar.newTab}
+            {showModal}
+          />
           <div class="flex flex-col space-y-2 font-mono">
             <label for="placeholder" class="text-text"> Placeholder </label>
             <input

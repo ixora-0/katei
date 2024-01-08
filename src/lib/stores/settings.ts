@@ -26,6 +26,7 @@ export interface Settings {
   searchBar: {
     visibility: boolean;
     autofocus: boolean;
+    newTab: boolean;
     placeholder: string;
     searchEngine: string;
     queryParameter: string;
@@ -54,6 +55,7 @@ const defaultSettings: Settings = {
   searchBar: {
     visibility: true,
     autofocus: true,
+    newTab: false,
     placeholder: "search something...",
     searchEngine: "https://www.google.com/search",
     queryParameter: "q",
