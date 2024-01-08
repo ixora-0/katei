@@ -44,9 +44,9 @@
     <input
       type="text"
       name={searchBarSettings.queryParameter}
-      class="w-full bg-background font-mono text-7xl text-text outline-none transition-[text-shadow] duration-md ease-in-out placeholder:text-text placeholder:opacity-50 {hocusing
-        ? 'pr-12'
-        : ''}"
+      class="w-full bg-background font-mono text-7xl text-text outline-none transition-[text-shadow,padding] duration-md ease-in-out placeholder:text-text placeholder:opacity-50 {hocusing
+        ? 'pl-4 pr-14'
+        : 'pl-2'}"
       style:text-shadow={hocusing
         ? "0.25rem 0.25rem 1px var(--shadow-color)"
         : "0.5rem 0.5rem 1px var(--shadow-color)"}
@@ -72,7 +72,7 @@
 
     {#if hocusing}
       <div
-        class="transition-filter absolute right-0 top-0 flex h-full justify-center duration-md ease-in-out {hocusing
+        class="transition-filter absolute right-2 top-0 flex h-full justify-center duration-md ease-in-out {hocusing
           ? 'drop-shadow-hard'
           : 'drop-shadow-hard-md'}"
         transition:fly={{ x: 32, y: 0, duration: 300 }}
