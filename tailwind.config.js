@@ -15,6 +15,7 @@ export default {
         text: "var(--text-color)",
         border: "var(--border-color)",
         shadow: "var(--shadow-color)",
+        selected: "var(--selected-color)",
       },
       fontFamily: {
         sans: ["Comfortaa", ...defaultTheme.fontFamily.sans],

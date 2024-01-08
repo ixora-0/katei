@@ -101,6 +101,11 @@
           id="shadowColor"
           bind:value={$settings.colors.shadow}
         />
+        <ColorInput
+          label="Selected Color:"
+          id="selectedColor"
+          bind:value={$settings.colors.selected}
+        />
       </div>
     </section>
 

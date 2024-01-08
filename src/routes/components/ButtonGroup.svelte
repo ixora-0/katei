@@ -22,7 +22,7 @@
     class="relative w-fit divide-x-2 divide-border overflow-hidden whitespace-nowrap rounded border-2 border-l-0 border-border font-mono shadow-hard"
   >
     <div
-      class="absolute top-0 h-16 bg-blue-500 {showModal
+      class="absolute top-0 h-16 bg-selected {showModal
         ? 'transition-[transform,width] duration-md ease-in-out'
         : 'transition-none'}"
       style:transform="translateX({overlayLeft}px)"

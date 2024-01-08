@@ -14,6 +14,7 @@
     body.style.setProperty("--text-color", $settings.colors.text);
     body.style.setProperty("--border-color", $settings.colors.border);
     body.style.setProperty("--shadow-color", $settings.colors.shadow);
+    body.style.setProperty("--selected-color", $settings.colors.selected);
   }
 </script>
 

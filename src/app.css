@@ -8,5 +8,14 @@
     --text-color: #ffffff;
     --border-clor: #ffffff;
     --shadow-color: #00000080;
+    --selected-color: #2196F3;
+  }
+
+  ::selection {
+    background-color: var(--selected-color);
+  }
+
+  ::-moz-selection {
+    background-color: var(--selected-color);
   }
 }

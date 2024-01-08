@@ -67,7 +67,7 @@
         : 'drop-shadow-hard-md'}"
     >
       <div
-        class="absolute z-10 h-4 w-full bg-blue-500 transition-transform duration-md ease-in-out {hocusing
+        class="absolute z-10 h-4 w-full bg-selected transition-transform duration-md ease-in-out {hocusing
           ? 'translate-x-0'
           : '-translate-x-full'}"
       />

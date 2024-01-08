@@ -9,6 +9,7 @@ export interface Settings {
     text: string;
     border: string;
     shadow: string;
+    selected: string;
   };
   clock: {
     visibility: boolean;
@@ -38,6 +39,7 @@ const defaultSettings: Settings = {
     text: "#ffffff",
     border: "#ffffff",
     shadow: "#00000080",
+    selected: "#2196F3",
   },
   clock: {
     visibility: true,
