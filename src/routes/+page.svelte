@@ -148,7 +148,7 @@
           />
           <ButtonGroup
             label="Show seconds"
-            labels={["Show", "Uide"]}
+            labels={["Show", "Hide"]}
             values={[true, false]}
             bind:value={$settings.clock.time.showSeconds}
             {showModal}
