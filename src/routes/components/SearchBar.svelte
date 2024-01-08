@@ -9,6 +9,9 @@
   let thisEl: HTMLInputElement | undefined;
   let hovering = false;
   let focusing = true;
+  $: if (focusing) {
+    thisEl?.select();
+  }
   let hocusing = false;
   $: hocusing = hovering || focusing;
 
