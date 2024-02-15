@@ -1,11 +1,11 @@
 <script lang="ts">
   import "../app.css";
   import { onMount } from "svelte";
-  import settings, { reloadSettings } from "$lib/stores/settings";
+  import settings, { reloadSettingsStore } from "$lib/stores/settings";
 
   let body: HTMLBodyElement | undefined | null;
   onMount(() => {
-    reloadSettings();
+    reloadSettingsStore();
     body = document.querySelector("body");
   });
   $: if (body !== undefined && body !== null) {

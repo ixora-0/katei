@@ -64,11 +64,14 @@ const defaultSettings: Settings = {
   },
 };
 
-export function reloadSettings() {
-  settings.set(loadStoredSettings());
+export function reloadSettingsStore() {
+  settings.set(loadLocalSettings());
 }
 
-function loadStoredSettings(): Settings {
+/**
+ * Return settings stored in local storage.
+ */
+function loadLocalSettings(): Settings {
   const storedData = window.localStorage.getItem("settings");
   if (storedData === null) {
     return { ...defaultSettings };
@@ -95,12 +98,15 @@ function loadStoredSettings(): Settings {
 }
 
 // when prerendering (ie. on server) we don't load from local storage
-const initialSettings = browser ? loadStoredSettings() : defaultSettings;
+const initialSettings = browser ? loadLocalSettings() : defaultSettings;
 
 const settings = writable<Settings>(initialSettings);
 
 export default settings;
 
+/**
+ * Save settings from store to local storage
+ */
 export function saveSettings() {
   if (browser) {
     window.localStorage.setItem("settings", JSON.stringify(get(settings)));
