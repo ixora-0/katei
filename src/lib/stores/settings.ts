@@ -68,12 +68,20 @@ export function reloadSettingsStore() {
   settings.set(loadLocalSettings());
 }
 
+function saveDefaultSettings() {
+  if (browser) {
+    window.localStorage.setItem("settings", JSON.stringify(defaultSettings));
+  }
+}
+
 /**
  * Return settings stored in local storage.
+ * Save and return the default settings if data is missing or can't be parsed.
  */
 function loadLocalSettings(): Settings {
   const storedData = window.localStorage.getItem("settings");
   if (storedData === null) {
+    saveDefaultSettings();
     return { ...defaultSettings };
   }
 
@@ -81,7 +89,9 @@ function loadLocalSettings(): Settings {
   try {
     parsedData = JSON.parse(storedData);
   } catch (e) {
-    throw error(400, "can't parse settings");
+    // throw error(400, "can't parse settings");
+    saveDefaultSettings();
+    return defaultSettings;
   }
 
   const storedSettings: Settings = { ...defaultSettings, ...parsedData };
