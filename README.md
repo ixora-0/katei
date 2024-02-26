@@ -1,4 +1,21 @@
-# Building from source
+# Katei
+![screenshot](./screenshots/screenshot1.png)
+Highly customizable and minimal Firefox start page build with [svelte](https://svelte.dev/) and [sveltekit](https://kit.svelte.dev).
+
+## Installation
+ - Download from the `.xpi` file from [releases](https://github.com/ixora-0/katei/releases/)
+ - Drag the file into any open Firefox window to install it (select **Add** when you see the prompt).
+ - Alternatively, enter `about:addons` in the url bar, go to **Extensions**, select the gear button and choose **Install Add-on From File**, then select the downloaded file.
+
+## Roadmap
+ - [ ] Settings menu enhancements
+     - [ ] Tooltip for configuration options
+     - [ ] Customizable fonts
+ - [ ] Add color theme presets
+ - [ ] Add weather widget
+ - [ ] Add stock market watch widget
+
+## Building from source
 Requirements
 ```
 node: >= 20.10.0
