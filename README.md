@@ -22,8 +22,8 @@ bun: >= 1.1.4
 ```
 
 1. Run `bun install`
-2. Run `bun run build`. Code is built in `/build`.
-3. Run `web-ext build -s build`. Code is packaged to `/web-ext-artifacts`.
+2. Run `bun run build`. Code is built in `./build`.
+3. Run `web-ext build -s build`. Code is packaged to `./web-ext-artifacts`.
 
 ## Developing
 ### Prerequisites
