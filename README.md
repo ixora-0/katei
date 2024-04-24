@@ -25,3 +25,26 @@ pnpm: >= 8.12.1
 1. Run `pnpm install`
 2. Run `pnpm build`. Code is built in `/build`.
 3. Run `web-ext build -s build`. Code is packaged to `/web-ext-artifacts`.
+
+## Developing
+### Prerequisites
+Install [pnpm](https://pnpm.io/installation).
+Or, use [nix-shell](https://nixos.wiki/wiki/Development_environment_with_nix-shell) for an ephemeral development shell. You can use the default bash shell:
+```sh
+$ nix develop
+```
+Or specify your preffered shell:
+```sh
+$ nix develop -c zsh
+```
+You can also install [nix-direnv](https://github.com/nix-community/nix-direnv#installation) to automatically switch shells when you `cd` into the project.
+
+### Running
+ - First run;
+```sh
+$ pnpm install
+```
+ - Then run the following command to start a development build:
+```sh
+$ pnpm dev
+```
