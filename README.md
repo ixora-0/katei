@@ -18,17 +18,16 @@ Highly customizable and minimal Firefox start page build with [svelte](https://s
 ## Building from source
 Requirements
 ```
-node: >= 20.10.0
-pnpm: >= 8.12.1
+bun: >= 1.1.4
 ```
 
-1. Run `pnpm install`
-2. Run `pnpm build`. Code is built in `/build`.
+1. Run `bun install`
+2. Run `bun run build`. Code is built in `/build`.
 3. Run `web-ext build -s build`. Code is packaged to `/web-ext-artifacts`.
 
 ## Developing
 ### Prerequisites
-Install [pnpm](https://pnpm.io/installation).
+Install [bun](https://bun.sh/).
 Or, use [nix-shell](https://nixos.wiki/wiki/Development_environment_with_nix-shell) for an ephemeral development shell. You can use the default bash shell:
 ```sh
 $ nix develop
@@ -42,9 +41,9 @@ You can also install [nix-direnv](https://github.com/nix-community/nix-direnv#in
 ### Running
  - First run;
 ```sh
-$ pnpm install
+$ bun install
 ```
  - Then run the following command to start a development build:
 ```sh
-$ pnpm dev
+$ bun run dev
 ```
