@@ -1,0 +1,8 @@
+remote="$1"
+url="$2"
+
+while read local_ref local_sha remote_ref remote_sha; do
+    bunx --no -- commitlint --from "$remote_sha" --to "$local_sha"
+done
+
+exit $?
