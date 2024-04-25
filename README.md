@@ -39,7 +39,7 @@ $ nix develop -c zsh
 You can also install [nix-direnv](https://github.com/nix-community/nix-direnv#installation) to automatically switch shells when you `cd` into the project.
 
 ### Running
- - First run;
+ - First run:
 ```sh
 $ bun install
 ```
