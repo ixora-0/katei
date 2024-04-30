@@ -1,44 +1,48 @@
 {
-    "release-type": "node",
-    "changelog-sections": [
-        {
-            "type": "feat",
-            "section": "✨ Features"
-        },
-        {
-            "type": "fix",
-            "section": "🐛 Bug Fixes"
-        },
-        {
-            "type": "chore",
-            "hidden": false,
-            "section": "🚚 Chores"
-        },
-        {
-            "type": "docs",
-            "hidden": false,
-            "section": "📝 Documentation"
-        },
-        {
-            "type": "style",
-            "hidden": false,
-            "section": "💄 Styling"
-        },
-        {
-            "type": "refactor",
-            "hidden": false,
-            "section": "♻️ Code Refactoring"
-        },
-        {
-            "type": "perf",
-            "hidden": false,
-            "section": "⚡️ Performance Improvements"
-        },
-        {
-            "type": "test",
-            "hidden": false,
-            "section": "✅ Testing"
+    "packages": {
+        ".": {
+            "release-type": "node",
+            "package-name": "katei",
+            "changelog-sections": [
+                {
+                    "type": "feat",
+                    "section": "✨ Features"
+                },
+                {
+                    "type": "fix",
+                    "section": "🐛 Bug Fixes"
+                },
+                {
+                    "type": "chore",
+                    "hidden": false,
+                    "section": "🚚 Chores"
+                },
+                {
+                    "type": "docs",
+                    "hidden": false,
+                    "section": "📝 Documentation"
+                },
+                {
+                    "type": "style",
+                    "hidden": false,
+                    "section": "💄 Styling"
+                },
+                {
+                    "type": "refactor",
+                    "hidden": false,
+                    "section": "♻️ Code Refactoring"
+                },
+                {
+                    "type": "perf",
+                    "hidden": false,
+                    "section": "⚡️ Performance Improvements"
+                },
+                {
+                    "type": "test",
+                    "hidden": false,
+                    "section": "✅ Testing"
+                }
+            ]
         }
-    ],
-    "bootstrap-sha": "fa7ffd3334c3bf180fe7a9861a0f0fadf8cff888"
+    }
 }
