@@ -45,6 +45,11 @@
                     "section": "⚡️ Performance Improvements"
                 },
                 {
+                    "type": "ci",
+                    "hidden": false,
+                    "section": "🔧 CI/CD"
+                },                
+                {
                     "type": "test",
                     "hidden": false,
                     "section": "✅ Testing"
