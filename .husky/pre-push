@@ -1,5 +1,10 @@
 while read local_ref local_sha remote_ref remote_sha; do
-    bunx --no -- commitlint --from "$remote_sha" --to "$local_sha"
+    if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+        # only cheks the most recent commit when pushing to new branch
+        bunx --no -- commitlint --from "$local_sha" --to "$local_sha"
+    else
+        bunx --no -- commitlint --from "$remote_sha" --to "$local_sha"
+    fi
 done
 
 exit $?
