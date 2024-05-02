@@ -3,6 +3,13 @@
         ".": {
             "release-type": "node",
             "package-name": "katei",
+            "extra-files": [
+                {
+                    "type": "json",
+                    "path": "manifest.json",
+                    "jsonpath": "$.version"
+                }
+            ],
             "changelog-sections": [
                 {
                     "type": "feat",
