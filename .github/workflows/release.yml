@@ -26,6 +26,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Package source
+        id: package-source
+        run: zip -r katei-src.zip .
+
       - name: Install bun
         uses: oven-sh/setup-bun@v1
         with:
@@ -44,6 +48,14 @@ jobs:
           cmd: build
           source: build
           filename: "{name}-{version}.xpi"
+
+      - uses: yayuyokitano/firefox-addon@v0.0.3-alpha
+        with:
+          api_key: ${{ secrets.AMO_ISSUER }}
+          api_secret: ${{ secrets.AMO_SECRET }}
+          guid: 'katei@ixora-0'
+          xpi_path: ${{ steps.web-ext-build.outputs.target }}
+          src_path: katei-src.zip
 
       - name: Upload
         env:
