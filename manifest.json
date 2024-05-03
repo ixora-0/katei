@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "katei",
   "version": "0.0.1",
-  "author": "Harrelix",
-  "description": "simple homepage",
+  "author": "ixora-0",
+  "description": "Simple and customizable homepage",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
@@ -12,7 +12,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "katei@harrelix"
+      "id": "katei@ixora-0"
     }
   }
 }
