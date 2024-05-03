@@ -43,6 +43,7 @@ jobs:
         with:
           cmd: build
           source: build
+          filename: "{name}-{version}.xpi"
 
       - name: Upload
         env:
