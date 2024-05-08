@@ -28,7 +28,10 @@ jobs:
 
       - name: Package source
         id: package-source
-        run: zip -r katei-src.zip .
+        run: |
+          file_name="katei-src.zip"
+          zip -r "$file_name" . --exclude ".git/*"
+          echo "target=$file_name" >> "$GITHUB_OUTPUT"
 
       - name: Install bun
         uses: oven-sh/setup-bun@v1
@@ -41,23 +44,35 @@ jobs:
       - name: Build app
         run: bun run build
 
-      - name: Package
-        id: web-ext-build
-        uses: kewisch/action-web-ext@v1
-        with:
-          cmd: build
-          source: build
-          filename: "{name}-{version}.xpi"
+      - name: Install web-ext
+        run: bun add -g web-ext
 
-      - uses: yayuyokitano/firefox-addon@v0.0.3-alpha
+      - name: Package using web-ext
+        id: package
+        run: |
+          file_name="katei-v${{ needs.release-please.outputs.tag_name }}.xpi"
+          bunx web-ext build -s build -n "$file_name"
+          echo "target=web-ext-artifacts/$file_name" >> "$GITHUB_OUTPUT"
+
+      - name: Submit addon
+        id: submit
+        uses: ixora-0/firefox-addon@main
         with:
           api_key: ${{ secrets.AMO_ISSUER }}
           api_secret: ${{ secrets.AMO_SECRET }}
           guid: 'katei@ixora-0'
-          xpi_path: ${{ steps.web-ext-build.outputs.target }}
-          src_path: katei-src.zip
+          xpi_path: ${{ steps.package.outputs.target }}
+          src_path: ${{ steps.package-source.outputs.target }}
+          channel: unlisted
+          wait_until_signed: true
+
+      - name: Download signed version
+        id: download
+        run: |
+          file_name="katei-v${{ needs.release-please.outputs.tag_name }}.xpi"
+          curl -o $file_name ${{ steps.submit.outputs.version_url }}
 
       - name: Upload
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ needs.release-please.outputs.tag_name }} ${{ steps.web-ext-build.outputs.target }}
+        run: gh release upload ${{ needs.release-please.outputs.tag_name }} ${{ steps.download.outputs.target }}
