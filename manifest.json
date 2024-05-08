@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "katei",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "ixora-0",
   "description": "Simple and customizable homepage",
   "chrome_url_overrides": {
