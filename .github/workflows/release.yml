@@ -71,6 +71,7 @@ jobs:
         run: |
           file_name="katei-v${{ needs.release-please.outputs.tag_name }}.xpi"
           curl -o $file_name ${{ steps.submit.outputs.version_url }}
+          echo "target=$file_name" >> "$GITHUB_OUTPUT"
 
       - name: Upload
         env:
