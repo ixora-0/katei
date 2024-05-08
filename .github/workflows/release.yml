@@ -1,0 +1,78 @@
+name: Release Workflow
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v4
+        id: release
+
+  release-assets:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Package source
+        id: package-source
+        run: |
+          file_name="katei-src.zip"
+          zip -r "$file_name" . --exclude ".git/*"
+          echo "target=$file_name" >> "$GITHUB_OUTPUT"
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build app
+        run: bun run build
+
+      - name: Install web-ext
+        run: bun add -g web-ext
+
+      - name: Package using web-ext
+        id: package
+        run: |
+          file_name="katei-v${{ needs.release-please.outputs.tag_name }}.xpi"
+          bunx web-ext build -s build -n "$file_name"
+          echo "target=web-ext-artifacts/$file_name" >> "$GITHUB_OUTPUT"
+
+      - name: Submit addon
+        id: submit
+        uses: ixora-0/firefox-addon@main
+        with:
+          api_key: ${{ secrets.AMO_ISSUER }}
+          api_secret: ${{ secrets.AMO_SECRET }}
+          guid: 'katei@ixora-0'
+          xpi_path: ${{ steps.package.outputs.target }}
+          src_path: ${{ steps.package-source.outputs.target }}
+          channel: unlisted
+          wait_until_signed: true
+
+      - name: Download signed version
+        id: download
+        run: |
+          file_name="katei-v${{ needs.release-please.outputs.tag_name }}.xpi"
+          curl -o $file_name ${{ steps.submit.outputs.version_url }}
+
+      - name: Upload
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload ${{ needs.release-please.outputs.tag_name }} ${{ steps.download.outputs.target }}
