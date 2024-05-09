@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.1](https://github.com/ixora-0/katei/compare/katei-v0.1.0...katei-v0.1.1) (2024-05-09)
+
+
+### 🐛 Bug Fixes
+
+* **ci:** add output for download step in release workflow ([fa95eb9](https://github.com/ixora-0/katei/commit/fa95eb962a9add249496d034b3a4d40e6e17863e))
+* **ci:** update asset name in upload step ([8fea71e](https://github.com/ixora-0/katei/commit/8fea71e96ba0ed667b3101f81c2d0eabe879fbc0))
+
+
+### 🔧 CI/CD
+
+* fix file name when packaging using web-ext ([45f29e5](https://github.com/ixora-0/katei/commit/45f29e527ecafc659e1d98dd8b2bc0517f535839))
+* update usage of firefox addon action ([47c3ded](https://github.com/ixora-0/katei/commit/47c3dedce28ac68b63498fbbd0f695077ad78555))
+
 ## [0.1.0](https://github.com/ixora-0/katei/compare/katei-v0.0.1...katei-v0.1.0) (2024-05-08)
 
 
