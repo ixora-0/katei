@@ -70,4 +70,4 @@ jobs:
       - name: Upload
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ needs.release-please.outputs.tag_name }} ${{ steps.download.outputs.target }}
+        run: gh release upload ${{ needs.release-please.outputs.tag_name }} ${{ needs.release-please.outputs.tag_name }}.xpi
