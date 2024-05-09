@@ -65,13 +65,7 @@ jobs:
           src_path: ${{ steps.package-source.outputs.target }}
           channel: unlisted
           wait_until_signed: true
-
-      - name: Download signed version
-        id: download
-        run: |
-          file_name="katei-v${{ needs.release-please.outputs.tag_name }}.xpi"
-          curl -o $file_name ${{ steps.submit.outputs.version_url }}
-          echo "target=$file_name" >> "$GITHUB_OUTPUT"
+          download_file_name: ${{ needs.release-please.outputs.tag_name }}.xpi
 
       - name: Upload
         env:
