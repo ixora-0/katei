@@ -50,7 +50,7 @@ jobs:
       - name: Package using web-ext
         id: package
         run: |
-          file_name="katei-v${{ needs.release-please.outputs.tag_name }}.xpi"
+          file_name="${{ needs.release-please.outputs.tag_name }}.xpi"
           bunx web-ext build -s build -n "$file_name"
           echo "target=web-ext-artifacts/$file_name" >> "$GITHUB_OUTPUT"
 
