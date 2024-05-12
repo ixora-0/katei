@@ -60,7 +60,7 @@ jobs:
         with:
           api_key: ${{ secrets.AMO_ISSUER }}
           api_secret: ${{ secrets.AMO_SECRET }}
-          guid: 'katei@ixora-0'
+          guid: "katei@ixora-0"
           xpi_path: ${{ steps.package.outputs.target }}
           src_path: ${{ steps.package-source.outputs.target }}
           channel: unlisted
