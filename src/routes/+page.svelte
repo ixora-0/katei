@@ -8,7 +8,10 @@
   import { onMount } from "svelte";
   import TrashIcon from "$lib/icons/TrashIcon.svelte";
   import SaveIcon from "$lib/icons/SaveIcon.svelte";
-  import settings, { saveSettings, reloadSettingsStore } from "$lib/stores/settings";
+  import settings, {
+    saveSettings,
+    reloadSettingsStore,
+  } from "$lib/stores/settings";
   import Clock from "./components/Clock.svelte";
   import SearchBar from "./components/SearchBar.svelte";
   import FancyHover from "./components/FancyHover.svelte";
