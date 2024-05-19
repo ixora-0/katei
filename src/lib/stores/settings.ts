@@ -1,6 +1,5 @@
 import { browser } from "$app/environment";
 import { writable, get } from "svelte/store";
-import { error } from "@sveltejs/kit";
 import tinycolor from "tinycolor2";
 
 export interface Settings {
