@@ -8,6 +8,7 @@
   import { onMount } from "svelte";
   import TrashIcon from "$lib/icons/TrashIcon.svelte";
   import SaveIcon from "$lib/icons/SaveIcon.svelte";
+  import InfoIcon from "$lib/icons/InfoIcon.svelte";
   import settings, {
     saveSettings,
     reloadSettingsStore,
@@ -16,6 +17,7 @@
   import SearchBar from "./components/SearchBar.svelte";
   import FancyHover from "./components/FancyHover.svelte";
   import ButtonGroup from "./components/ButtonGroup.svelte";
+  import TooltipIcon from "./components/TooltipIcon.svelte";
 
   let showModal = false;
   let editedColor = false;
@@ -78,7 +80,7 @@
   </h2>
   <hr class="my-5 border-border" />
 
-  <form class="max-h-80 space-y-10 overflow-y-scroll pb-32">
+  <form class="max-h-80 space-y-10 overflow-y-auto pb-32">
     <section class="space-y-4">
       <h3 class="font-sans text-4xl font-bold text-text">
         <FancyHover>Colors</FancyHover>
@@ -129,6 +131,7 @@
             label="Break date and time"
             labels={["Break", "No break"]}
             values={[true, false]}
+            tooltip="Select 'Break' to add a new line between the date and time for better clarity."
             bind:value={$settings.clock.breakDateTime}
             {showModal}
           />
@@ -144,6 +147,7 @@
             label="Time format"
             labels={["24-hour", "12-hour"]}
             values={[false, true]}
+            tooltip="Select 24-hour (14:30) or 12-hour (2:30 PM) time display."
             bind:value={$settings.clock.time.twelveHour}
             {showModal}
           />
@@ -151,6 +155,7 @@
             label="Hour display"
             labels={["Leading zero", "No leading zero"]}
             values={[true, false]}
+            tooltip="Show a leading zero for single-digit hours (e.g., 02:30 instead of 2:30)."
             bind:value={$settings.clock.time.paddedHour}
             {showModal}
           />
@@ -173,6 +178,7 @@
             label="Weekday format"
             labels={["Long", "Short", "Hide"]}
             values={["long", "short", "hide"]}
+            tooltip={"'Long' will display the full weekday name (e.g., Monday).\n'Short' will display the abbreviated weekday name (e.g., Mon).\n'Hide' will hide the weekday from the date display."}
             bind:value={$settings.clock.date.weekdayFormat}
             {showModal}
           />
@@ -180,6 +186,7 @@
             label="Month format"
             labels={["Number", "Leading zero", "Long", "Short", "Hide"]}
             values={["numeric", "2-digit", "long", "short", "hide"]}
+            tooltip={"'Numeric' will display the month as a number (e.g., 1 for January).\n'Leading zero' will display the month with a leading zero for single-digit months (e.g., 01 for January).\n'Long' will display the full month name (e.g., January).\n'Short' will display the abbreviated month name (e.g., Jan).\n'Hide' will hide the month from the date display."}
             bind:value={$settings.clock.date.monthFormat}
             {showModal}
           />
@@ -230,9 +237,15 @@
 
         <div class="flex flex-wrap items-center gap-6">
           <div class="flex flex-col space-y-2 font-mono">
-            <label for="searchEngine" class="text-xl text-text">
-              Search Engine URL
-            </label>
+            <div class="flex space-x-4">
+              <label for="searchEngine" class="text-xl text-text">
+                Search Engine URL
+              </label>
+              <TooltipIcon showModal>
+                <InfoIcon slot="icon" />
+                This sets the search engine's URL.
+              </TooltipIcon>
+            </div>
             <input
               type="text"
               id="searchEngine"

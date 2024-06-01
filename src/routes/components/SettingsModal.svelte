@@ -33,10 +33,10 @@
       dialog?.close();
     }
   }}
-  class={`w-full max-w-screen-xl overflow-visible rounded-lg border-4 border-border bg-background transition duration-md ease-in-out backdrop:bg-black/20 backdrop:backdrop-blur-sm ${
+  class={`transition-{left, top} w-full max-w-screen-xl overflow-visible rounded-lg border-4 border-border bg-background duration-md ease-in-out backdrop:bg-black/20 backdrop:backdrop-blur-sm ${
     hovering
-      ? "translate-x-2 translate-y-2 shadow-hard-lg-inset-md"
-      : "shadow-hard-xl-inset"
+      ? "left-2 top-2 shadow-hard-lg-inset-md"
+      : "left-0 top-0 shadow-hard-xl-inset"
   }`}
 >
   <!-- using a child div to detect hover because dialog uses margin to center -->
