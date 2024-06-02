@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { computePosition } from "@floating-ui/dom";
+  import { computePosition, offset } from "@floating-ui/dom";
   import { fly } from "svelte/transition";
   export let maxWidth: string = "512px";
 
@@ -16,8 +16,11 @@
   let icon: HTMLDivElement | undefined;
   let tooltip: HTMLDivElement | undefined;
   let left: number, top: number;
-  $: if (icon !== undefined) {
-    computePosition(icon, tooltip, { placement: "right" }).then(({ x, y }) => {
+  $: if (icon && tooltip) {
+    computePosition(icon, tooltip, {
+      placement: "right",
+      middleware: [offset(8)],
+    }).then(({ x, y }) => {
       left = x;
       top = y;
     });
