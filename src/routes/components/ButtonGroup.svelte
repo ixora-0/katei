@@ -21,7 +21,7 @@
 </script>
 
 <fieldset class="space-y-2">
-  <div class="flex space-x-4">
+  <div class="flex items-center space-x-4">
     <legend class="font-mono text-xl text-text">{label}</legend>
     {#if tooltip !== ""}
       <TooltipIcon {showModal}>
