@@ -31,7 +31,6 @@
   {#key showModal}
     <div
       role="none"
-      class="relative inline-block flex items-center"
       bind:this={icon}
       on:mouseenter={onHover}
       on:mouseleave={offHover}
