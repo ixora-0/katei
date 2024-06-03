@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/ixora-0/katei/compare/katei-v0.1.1...katei-v0.2.0) (2024-06-03)
+
+
+### ✨ Features
+
+* add popups in settings ([#8](https://github.com/ixora-0/katei/issues/8)) ([306513b](https://github.com/ixora-0/katei/commit/306513bcf7133c9d3ae235d2ae94f8d4c101a23c))
+
+
+### 💄 Styling
+
+* apply formatting ([#9](https://github.com/ixora-0/katei/issues/9)) ([789abd0](https://github.com/ixora-0/katei/commit/789abd09217954b317decd5b2419d38baa46c48e))
+* update .editorconfig for prettier ([789abd0](https://github.com/ixora-0/katei/commit/789abd09217954b317decd5b2419d38baa46c48e))
+
+
+### 🔧 CI/CD
+
+* add eslint and prettier checks ([#12](https://github.com/ixora-0/katei/issues/12)) ([b66395b](https://github.com/ixora-0/katei/commit/b66395b105f380fdc2fd4a417f27482e1677177e))
+
 ## [0.1.1](https://github.com/ixora-0/katei/compare/katei-v0.1.0...katei-v0.1.1) (2024-05-09)
 
 
