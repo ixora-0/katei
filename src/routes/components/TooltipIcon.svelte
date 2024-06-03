@@ -6,11 +6,17 @@
   export let showModal: boolean; // only way to have left and top set correctly. This element is mounted before modal is shown (during which this would have width of 0). afterUpdate is also not called when dialog is opened.
 
   let hovering = false;
+  let hoverTimeout;
+
   const onHover = () => {
     hovering = true;
+    clearTimeout(hoverTimeout);
   };
+
   const offHover = () => {
-    hovering = false;
+    hoverTimeout = setTimeout(() => {
+      hovering = false;
+    }, 50);
   };
 
   let icon: HTMLDivElement | undefined;
