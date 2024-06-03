@@ -1,7 +1,10 @@
 <script lang="ts">
+  import InfoIcon from "$lib/icons/InfoIcon.svelte";
+  import TooltipIcon from "./TooltipIcon.svelte";
   export let label: string;
   export let labels: string[];
   export let values: (number | string | boolean)[];
+  export let tooltip: string = "";
 
   export let selectedIdx: number = -1;
   $: selectedIdx = values.indexOf(value);
@@ -14,10 +17,19 @@
     overlayWidth = buttons[selectedIdx]!.offsetWidth;
     overlayLeft = buttons[selectedIdx]!.offsetLeft;
   }
+  // $: console.log(showModal);
 </script>
 
 <fieldset class="space-y-2">
-  <legend class="font-mono text-xl text-text">{label}</legend>
+  <div class="flex items-center space-x-4">
+    <legend class="font-mono text-xl text-text">{label}</legend>
+    {#if tooltip !== ""}
+      <TooltipIcon {showModal}>
+        <InfoIcon slot="icon" />
+        {tooltip}
+      </TooltipIcon>
+    {/if}
+  </div>
   <div
     class="relative w-fit divide-x-2 divide-border overflow-hidden whitespace-nowrap rounded border-2 border-l-0 border-border font-mono shadow-hard"
   >
