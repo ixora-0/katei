@@ -131,7 +131,7 @@
             label="Break date and time"
             labels={["Break", "No break"]}
             values={[true, false]}
-            tooltip="Select 'Break' to add a new line between the date and time for better clarity."
+            tooltip="Add a new line between the date and time for better clarity."
             bind:value={$settings.clock.breakDateTime}
             {showModal}
           />
@@ -155,7 +155,7 @@
             label="Hour display"
             labels={["Leading zero", "No leading zero"]}
             values={[true, false]}
-            tooltip="Show a leading zero for single-digit hours (e.g., 02:30 instead of 2:30)."
+            tooltip="Show a leading zero for single-digit hours (02:30 instead of 2:30)."
             bind:value={$settings.clock.time.paddedHour}
             {showModal}
           />
@@ -178,7 +178,7 @@
             label="Weekday format"
             labels={["Long", "Short", "Hide"]}
             values={["long", "short", "hide"]}
-            tooltip={"'Long' will display the full weekday name (e.g., Monday).\n'Short' will display the abbreviated weekday name (e.g., Mon).\n'Hide' will hide the weekday from the date display."}
+            tooltip={"'Long' will display the full weekday name (Monday).\n'Short' will display the abbreviated weekday name (Mon).\n'Hide' will hide the weekday from the date display."}
             bind:value={$settings.clock.date.weekdayFormat}
             {showModal}
           />
@@ -186,7 +186,7 @@
             label="Month format"
             labels={["Number", "Leading zero", "Long", "Short", "Hide"]}
             values={["numeric", "2-digit", "long", "short", "hide"]}
-            tooltip={"'Numeric' will display the month as a number (e.g., 1 for January).\n'Leading zero' will display the month with a leading zero for single-digit months (e.g., 01 for January).\n'Long' will display the full month name (e.g., January).\n'Short' will display the abbreviated month name (e.g., Jan).\n'Hide' will hide the month from the date display."}
+            tooltip={"'Numeric' will display the month as a number (1 for January).\n'Leading zero' will display the month with a leading zero for single-digit months (01 for January).\n'Long' will display the full month name (January).\n'Short' will display the abbreviated month name (Jan).\n'Hide' will hide the month from the date display."}
             bind:value={$settings.clock.date.monthFormat}
             {showModal}
           />
